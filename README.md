@@ -61,6 +61,8 @@ When working in this repo with Claude Code, it is picked up automatically and gu
 
 ## Requirements
 
+- [Claude Code](https://code.claude.com/docs/en/quickstart)
+- Superpowers plugin `npx claudepluginhub obra/superpowers --plugin superpowers`
 - Java 21+
 - Burp Suite installed at its default location for your OS:
 
@@ -68,5 +70,5 @@ When working in this repo with Claude Code, it is picked up automatically and gu
 |---------|-----------------------------------------------------|
 | macOS   | `/Applications/Burp Suite.app/Contents/Resources`   |
 | Windows | `C:\Program Files\BurpSuite`                        |
-| Linux   | `/opt/BurpSuite`                                    |
+| Linux   | `~/BurpSuitePro`                                    |
 
