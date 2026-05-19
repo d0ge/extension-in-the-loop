@@ -2,6 +2,7 @@
 
 A template for building Burp Suite extensions with a built-in integration testing framework. 
 It lets you verify extension behaviour against a real, running Burp instance as part of your normal Gradle build.
+Inspired by [Live Testing](https://github.com/CompassSecurity/SAMLRaider/blob/master/doc/hacking.md)
 
 ## Why
 
