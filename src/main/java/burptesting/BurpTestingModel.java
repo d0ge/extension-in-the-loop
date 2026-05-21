@@ -2,7 +2,6 @@ package burptesting;
 
 import burp.api.montoya.MontoyaApi;
 import burptesting.tests.Base64Test;
-import burptesting.tests.SimpleHttpRequestTest;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -13,8 +12,7 @@ import java.util.Set;
 
 public class BurpTestingModel {
     private static final List<Class<?>> TEST_CLASSES = List.of(
-            Base64Test.class,
-            SimpleHttpRequestTest.class
+            Base64Test.class
     );
 
     private final Set<String> classFilter;
@@ -57,7 +55,7 @@ public class BurpTestingModel {
     private List<TestExecution> executeClass(Class<?> testClass) {
         try {
             var instance = testClass.getDeclaredConstructor().newInstance();
-            if (instance instanceof ApiAware a) {
+            if (instance instanceof BurpTestingInterface a) {
                 a.setApi(api);
             }
             return Arrays.stream(testClass.getDeclaredMethods())

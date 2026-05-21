@@ -1,4 +1,4 @@
-package integration;
+package burptesting;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -49,7 +49,7 @@ public class BurpIntegrationTest {
                 "-Xbootclasspath/a:" + extensionJar,
                 "-Dburptesting.extension=" + extensionName,
                 "-jar", installation.burpJar().toString(),
-                "--developer-extension-class-name=Extension",
+                "--developer-extension-class-name=burp.Extension",
                 "--use-defaults",
                 "--temporary-project"
         );

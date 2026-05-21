@@ -2,7 +2,7 @@
 
 A template for building Burp Suite extensions with a built-in integration testing framework. 
 It lets you verify extension behaviour against a real, running Burp instance as part of your normal Gradle build.
-Inspired by [Live Testing](https://github.com/CompassSecurity/SAMLRaider/blob/master/doc/hacking.md)
+Inspired by Tobias Hort-Giess [Live Testing](https://github.com/CompassSecurity/SAMLRaider/blob/master/doc/hacking.md) approach.
 
 ## Why
 
@@ -19,17 +19,17 @@ Put your extension code in `src/main/java/`. The entry point is `Extension.java`
 
 Add test classes to `src/main/java/burptesting/tests/`. Each public method that returns `TestResult` is treated as a test case.
 
-- If your test only needs to construct Montoya objects, no extra setup is required.
-- If your test needs the live `MontoyaApi`, implement `ApiAware` — the framework calls `setApi()` before running your tests.
+Implement `BurpTestingInterface` when writing Burp Suite Integration tests. The framework calls `setApi()` before running any test methods.
 
 ```java
-public class MyTest implements ApiAware {
+public class Base64Test implements BurpTestingInterface {
     private MontoyaApi api;
 
     @Override
     public void setApi(MontoyaApi api) { this.api = api; }
 
-    public TestResult myCheck() {
+    public TestResult encodeAndDecode() {
+        var base64 = api.utilities().base64Utils();
         // use api freely here
         return new TestResult(true, null, null);
     }
@@ -58,7 +58,7 @@ Gradle builds the extension jar, launches Burp headlessly with the jar loaded, r
 ## Claude Code
 
 A Claude Code skill for Burp extension development is bundled at `.claude/skills/burp-extension-development/`. 
-When working in this repo with Claude Code, it is picked up automatically and guides Claude on Montoya API patterns, integration test structure, and code style.
+When working in this repo with Claude Code, it is picked up automatically and guides Claude on Montoya API patterns, burptesting test structure, and code style.
 
 ## Requirements
 
@@ -67,9 +67,9 @@ When working in this repo with Claude Code, it is picked up automatically and gu
 - Java 21+
 - Burp Suite installed at its default location for your OS:
 
-| OS      | Path                                                |
-|---------|-----------------------------------------------------|
-| macOS   | `/Applications/Burp Suite.app/Contents/Resources`   |
-| Windows | `C:\Program Files\BurpSuite`                        |
-| Linux   | `~/BurpSuitePro`                                    |
+| OS      | Path                                              |
+|---------|---------------------------------------------------|
+| macOS   | `/Applications/Burp Suite.app/Contents/Resources` |
+| Windows | `C:\Program Files\BurpSuite`                      |
+| Linux   | `~/BurpSuite`                                     |
 

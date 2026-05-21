@@ -2,36 +2,12 @@
 
 Integration tests live in `src/main/java/burptesting/tests/` and run inside a live Burp Suite instance.
 
-## Which Pattern to Use
+## Pattern 
 
-| Pattern | When |
-|---------|------|
-| Plain class | Test only needs Montoya static factories — no live Burp state |
-| `ApiAware` | Test needs real Burp state: scope, proxy history, HTTP, persistence |
-
-## Pattern 1 — Plain class
+Implement `BurpTestingInterface` when writing Burp Suite Integration tests. The framework calls `setApi()` before running any test methods.
 
 ```java
-package burptesting.tests;
-
-import burp.api.montoya.http.message.requests.HttpRequest;
-import burptesting.TestResult;
-
-public class HttpHeaderPresentTest {
-    public TestResult hostHeaderPresent() {
-        HttpRequest request = HttpRequest.httpRequest("GET / HTTP/1.1\r\nHost: example.com\r\n\r\n");
-        boolean ok = request.hasHeader("Host");
-        return new TestResult(ok, ok ? null : "Missing Host header", null);
-    }
-}
-```
-
-## Pattern 2 — ApiAware (live Burp state)
-
-Implement `ApiAware` when your test needs the real `MontoyaApi`. The framework calls `setApi()` before running any test methods.
-
-```java
-public class Base64Test implements ApiAware {
+public class Base64Test implements BurpTestingInterface {
     private MontoyaApi api;
 
     @Override
@@ -55,7 +31,7 @@ return new TestResult(false, "Expected X but got Y", null);     // fail with mes
 return new TestResult(false, "Exception thrown", e);            // fail with cause
 ```
 
-Constructor: `TestResult(boolean success, String failureMessage, Throwable cause)`
+Constructor: `TestResult(boolean success, String message, Throwable throwable)`
 
 ## Registering a Test Class
 
@@ -63,8 +39,7 @@ Every new test class must be added to `BurpTestingModel.TEST_CLASSES`:
 
 ```java
 private static final List<Class<?>> TEST_CLASSES = List.of(
-        SimpleHttpRequestTest.class,
-        ScopeIsEmptyTest.class,
+        Base64Test.class,
         MyNewTest.class   // add here
 );
 ```

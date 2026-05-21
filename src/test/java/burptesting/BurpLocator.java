@@ -1,4 +1,4 @@
-package integration;
+package burptesting;
 
 import java.nio.file.Path;
 
@@ -48,7 +48,7 @@ public class BurpLocator {
         } else if (os.contains("win")) {
             return Path.of("C:\\Program Files\\BurpSuite");
         } else {
-            return Path.of(System.getProperty("user.home"), "BurpSuitePro");
+            return Path.of(System.getProperty("user.home"), "BurpSuite");
         }
     }
 

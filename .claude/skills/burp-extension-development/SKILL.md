@@ -21,20 +21,18 @@ description: Use when writing, modifying, or testing Burp Suite extension code i
 
 | Type | Location | Framework | When |
 |------|----------|-----------|------|
-| Unit | `src/test/java/unit/` | JUnit 5 | Isolated logic, no Burp needed |
 | Integration | `src/main/java/burptesting/tests/` | Burp testing framework | Behavior inside a live Burp instance |
 
-Write unit tests first. Add integration tests after unit tests pass.
+Add integration tests to the `src/main/java/burptesting/tests/` folder.
 
 ## Reference
 
-Read `references/testing-patterns.md` before writing integration tests — it contains `TestResult` usage, `ApiAware` pattern, test ordering, and full worked examples.
+Read `references/testing-patterns.md` before writing integration tests — it contains `TestResult` usage, `BurpTestingInterface` pattern, test ordering, and full worked examples.
 
 ## Quick Reference
 
-| Need | Answer |
-|------|--------|
-| Test without live Burp | Plain class — public methods returning `TestResult` |
-| Test with live Burp state | Implement `ApiAware`, receive `MontoyaApi` via `setApi()` |
+| Need                            | Answer |
+|---------------------------------|--------|
+| Burp Suite Integration Tests    | Implement `BurpTestingInterface`, receive `MontoyaApi` via `setApi()` |
 | Control test order within class | `@TestOrder.Order(n)` — lower runs first |
-| Register a new test class | Add to `BurpTestingModel.TEST_CLASSES` |
+| Register a new test class       | Add to `BurpTestingModel.TEST_CLASSES` |

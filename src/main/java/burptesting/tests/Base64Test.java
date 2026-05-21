@@ -1,13 +1,12 @@
 package burptesting.tests;
 
 import burp.api.montoya.MontoyaApi;
-import burp.api.montoya.utilities.Base64DecodingOptions;
 import burp.api.montoya.utilities.Base64EncodingOptions;
-import burptesting.ApiAware;
+import burptesting.BurpTestingInterface;
 import burptesting.TestOrder;
 import burptesting.TestResult;
 
-public class Base64Test implements ApiAware {
+public class Base64Test implements BurpTestingInterface {
     private MontoyaApi api;
 
     @Override

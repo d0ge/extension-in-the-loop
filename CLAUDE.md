@@ -7,13 +7,13 @@ This file provides guidance to Claude Code when working with code in this reposi
 ## Project description
 
 This is a template project for building Burp Suite extensions.
-It provides a ready-made integration testing framework so extension behaviour can be verified against a real running
+It provides a ready-made burptesting testing framework so extension behaviour can be verified against a real running
 Burp Suite instance.
 
 - Language: Java
 - Build system: Gradle
 - Minimum Java version: 21
-- API: Burp Suite Montoya API
+- API: Burp Suite Montoya API Interface files available at @src/main/java/burp/api/montoya
 
 ---
 
@@ -21,12 +21,10 @@ Burp Suite instance.
 
 ```
 src/main/java/
-  burp/api/montoya/   # Burp Suite Montoya API interface files 
-  burptesting/        # Burp Suite integration test framework
-  Extension.java      # Entry point of the extension, change the BurpExtensionIntegrationTest if class name was changed
+  burp/api/montoya/      # Burp Suite Montoya API interface files 
+  burp/Extension.java    # Entry point of the extension, change the BurpIntegrationTest if class name was changed
+  burptesting/           # Burp Suite burptesting test framework
 ```
-
-
 
 ---
 
@@ -41,14 +39,6 @@ Output: `build/libs/extension-in-the-loop-<version>.jar`
 ---
 
 ## Testing
-
-### Unit tests
-
-```sh
-./gradlew test
-```
-
-Unit tests live in `src/test/java/unit/`. See `TestResultTest` for an example.
 
 ### Integration tests
 
@@ -65,35 +55,17 @@ Integration tests run inside a live Burp instance:
 | What              | Where                              |
 |-------------------|------------------------------------|
 | Extension code    | `src/main/java/`                   |
-| Unit tests        | `src/test/java/unit/`              |
 | Integration tests | `src/main/java/burptesting/tests/` |
 
 ---
 
 ## Integration test examples
 
-### Example 1 — Pure Montoya API (no live Burp state)
-
-Use when your test only needs to construct or inspect Montoya objects.
-No `ApiAware` required.
-
-```java
-public class SimpleHttpRequestTest {
-    public TestResult testMontoyaRequest() {
-        HttpRequest request = HttpRequest.httpRequest("GET / HTTP/1.1\r\nHost: example.com\r\n\r\n");
-        boolean success = request.hasHeader("Host");
-        return new TestResult(success, null, null);
-    }
-}
-```
-
-### Example 2 — Live Burp state via `ApiAware`
-
-Implement `ApiAware` when your test needs the real `MontoyaApi` — the framework
+Implement `BurpTestingInterface` when your test needs the real `MontoyaApi` — the framework
 calls `setApi()` before running any test methods.
 
 ```java
-public class Base64Test implements ApiAware {
+public class Base64Test implements BurpTestingInterface {
     private MontoyaApi api;
 
     @Override

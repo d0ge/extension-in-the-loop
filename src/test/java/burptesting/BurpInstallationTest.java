@@ -1,4 +1,4 @@
-package integration;
+package burptesting;
 
 import org.junit.jupiter.api.Test;
 
