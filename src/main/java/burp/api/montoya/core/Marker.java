@@ -15,6 +15,11 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface Marker {
     /**
+     * @return The range of the marker.
+     */
+    Range range();
+
+    /**
      * Create a marker object with a range.
      *
      * @param range The range of the marker.
@@ -34,9 +39,4 @@ public interface Marker {
     static Marker marker(int startIndexInclusive, int endIndexExclusive) {
         return FACTORY.marker(startIndexInclusive, endIndexExclusive);
     }
-
-    /**
-     * @return The range of the marker.
-     */
-    Range range();
 }

@@ -32,6 +32,13 @@ public enum HighlightColor {
     }
 
     /**
+     * @return displayName of highlightColor
+     */
+    public String displayName() {
+        return displayName;
+    }
+
+    /**
      * Create HighlightColor from display name string.
      *
      * @param colorName Color's display name
@@ -39,12 +46,5 @@ public enum HighlightColor {
      */
     public static HighlightColor highlightColor(String colorName) {
         return FACTORY.highlightColor(colorName);
-    }
-
-    /**
-     * @return displayName of highlightColor
-     */
-    public String displayName() {
-        return displayName;
     }
 }

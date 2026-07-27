@@ -2,7 +2,7 @@ package burp.api.montoya.ui.menu;
 
 import burp.api.montoya.core.Registration;
 
-import javax.swing.*;
+import javax.swing.JMenu;
 
 /**
  * The top menu bar for the main suite frame.

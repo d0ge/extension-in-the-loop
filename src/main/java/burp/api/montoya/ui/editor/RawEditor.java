@@ -11,7 +11,7 @@ package burp.api.montoya.ui.editor;
 import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.ui.Selection;
 
-import java.awt.*;
+import java.awt.Component;
 import java.util.Optional;
 
 /**

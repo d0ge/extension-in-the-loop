@@ -7,6 +7,14 @@ import java.util.List;
  */
 public interface BambdaImportResult {
     /**
+     * The status of an imported Bambda
+     */
+    enum Status {
+        LOADED_WITHOUT_ERRORS,
+        LOADED_WITH_ERRORS
+    }
+
+    /**
      * The status of the Bambda after import
      *
      * @return the status
@@ -17,12 +25,4 @@ public interface BambdaImportResult {
      * @return a list of error messages, or an empty list if the script was imported without errors.
      */
     List<String> importErrors();
-
-    /**
-     * The status of an imported Bambda
-     */
-    enum Status {
-        LOADED_WITHOUT_ERRORS,
-        LOADED_WITH_ERRORS
-    }
 }

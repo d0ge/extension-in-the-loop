@@ -18,6 +18,20 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface PayloadProcessingResult {
     /**
+     * @return The current value of the processed payload.
+     */
+    ByteArray processedPayload();
+
+    /**
+     * Invoked by Burp to see what action it should perform with the payload. If the value
+     * is {@link PayloadProcessingAction#USE_PAYLOAD}, Burp will use the payload in the attack or skip it
+     * if the value is {@link PayloadProcessingAction#SKIP_PAYLOAD}.
+     *
+     * @return Action to perform with the payload.
+     */
+    PayloadProcessingAction action();
+
+    /**
      * Create a new instance of {@link PayloadProcessingResult} with a
      * {@link PayloadProcessingAction#USE_PAYLOAD} action.
      *
@@ -41,18 +55,4 @@ public interface PayloadProcessingResult {
     static PayloadProcessingResult payloadProcessingResult(ByteArray processedPayload, PayloadProcessingAction action) {
         return FACTORY.payloadProcessingResult(processedPayload, action);
     }
-
-    /**
-     * @return The current value of the processed payload.
-     */
-    ByteArray processedPayload();
-
-    /**
-     * Invoked by Burp to see what action it should perform with the payload. If the value
-     * is {@link PayloadProcessingAction#USE_PAYLOAD}, Burp will use the payload in the attack or skip it
-     * if the value is {@link PayloadProcessingAction#SKIP_PAYLOAD}.
-     *
-     * @return Action to perform with the payload.
-     */
-    PayloadProcessingAction action();
 }

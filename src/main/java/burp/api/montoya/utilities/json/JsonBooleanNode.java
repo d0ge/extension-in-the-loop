@@ -14,6 +14,9 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  * This interface is used to define a JSON boolean node.
  */
 public interface JsonBooleanNode extends JsonNode {
+    @Override
+    Boolean getValue();
+
     /**
      * Creates a new instance of {@link JsonBooleanNode} from the supplied boolean.
      *
@@ -23,7 +26,4 @@ public interface JsonBooleanNode extends JsonNode {
     static JsonBooleanNode jsonBooleanNode(boolean value) {
         return FACTORY.jsonBooleanNode(value);
     }
-
-    @Override
-    Boolean getValue();
 }

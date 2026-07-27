@@ -9,15 +9,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface SettingsPanelBuilder {
     /**
-     * Used to obtain an instance of the SettingsPanelBuilder.
-     *
-     * @return an instance of the SettingsPanelBuilder.
-     */
-    static SettingsPanelBuilder settingsPanel() {
-        return FACTORY.settingsPanel();
-    }
-
-    /**
      * Sets the type of data persistence.
      *
      * @param persistence type of data persistence.
@@ -78,4 +69,13 @@ public interface SettingsPanelBuilder {
      * @return the settings panel
      */
     SettingsPanelWithData build();
+
+    /**
+     * Used to obtain an instance of the SettingsPanelBuilder.
+     *
+     * @return an instance of the SettingsPanelBuilder.
+     */
+    static SettingsPanelBuilder settingsPanel() {
+        return FACTORY.settingsPanel();
+    }
 }

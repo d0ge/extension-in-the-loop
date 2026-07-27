@@ -9,16 +9,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface Menu {
     /**
-     * Create a new instance of {@link Menu}.
-     *
-     * @param caption The caption for the menu.
-     * @return A new instance of {@link Menu}.
-     */
-    static Menu menu(String caption) {
-        return FACTORY.menu(caption);
-    }
-
-    /**
      * The caption to be displayed for the menu.
      *
      * @return The caption
@@ -55,4 +45,14 @@ public interface Menu {
      * @return An updated copy of {@link Menu}.
      */
     Menu withMenuItems(List<MenuItem> menuItems);
+
+    /**
+     * Create a new instance of {@link Menu}.
+     *
+     * @param caption The caption for the menu.
+     * @return A new instance of {@link Menu}.
+     */
+    static Menu menu(String caption) {
+        return FACTORY.menu(caption);
+    }
 }

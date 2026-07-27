@@ -19,5 +19,9 @@ public class BurpInstallationTest {
                 "Burp bundled java binary not found or not executable: " + inst.javaBinary());
         assertTrue(inst.burpJar().toFile().isFile(),
                 "burpsuite.jar not found: " + inst.burpJar());
+        if (inst.appLauncher() != null) {
+            assertTrue(inst.appLauncher().toFile().canExecute(),
+                    "Burp app launcher not found or not executable: " + inst.appLauncher());
+        }
     }
 }

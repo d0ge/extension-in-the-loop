@@ -18,6 +18,23 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface ResponseReceivedAction {
     /**
+     * @return the action.
+     */
+    default ResponseAction action() {
+        return ResponseAction.CONTINUE;
+    }
+
+    /**
+     * @return The HTTP response.
+     */
+    HttpResponse response();
+
+    /**
+     * @return The annotations.
+     */
+    Annotations annotations();
+
+    /**
      * Create a new instance of {@code ResponseResult}. Annotations will not be modified.
      *
      * @param response An HTTP response.
@@ -37,21 +54,4 @@ public interface ResponseReceivedAction {
     static ResponseReceivedAction continueWith(HttpResponse response, Annotations annotations) {
         return FACTORY.responseResult(response, annotations);
     }
-
-    /**
-     * @return the action.
-     */
-    default ResponseAction action() {
-        return ResponseAction.CONTINUE;
-    }
-
-    /**
-     * @return The HTTP response.
-     */
-    HttpResponse response();
-
-    /**
-     * @return The annotations.
-     */
-    Annotations annotations();
 }

@@ -15,11 +15,13 @@ public class BurpLocator {
         Path root = root();
         Path javaBinary;
         Path burpJar;
+        Path appLauncher = null;
 
         String os = System.getProperty("os.name", "").toLowerCase();
         if (os.contains("mac")) {
             javaBinary = root.resolve("jre.bundle/Contents/Home/bin/java");
             burpJar = root.resolve("app/burpsuite.jar");
+            appLauncher = root.getParent().resolve("MacOS/JavaApplicationStub");
         } else if (os.contains("win")) {
             javaBinary = root.resolve("jre\\bin\\java.exe");
             burpJar = root.resolve("burpsuite.jar");
@@ -35,7 +37,7 @@ public class BurpLocator {
             );
         }
 
-        return new BurpInstallation(javaBinary, burpJar);
+        return new BurpInstallation(javaBinary, burpJar, appLauncher);
     }
 
     /**
@@ -54,7 +56,10 @@ public class BurpLocator {
 
     /**
      * Paths to the bundled JRE java binary and burpsuite.jar within a Burp installation.
+     * {@code appLauncher} is the native app launcher to use instead of {@code javaBinary} when the
+     * platform requires it (currently macOS only); {@code null} where launching {@code javaBinary}
+     * directly is safe.
      */
-    public record BurpInstallation(Path javaBinary, Path burpJar) {
+    public record BurpInstallation(Path javaBinary, Path burpJar, Path appLauncher) {
     }
 }

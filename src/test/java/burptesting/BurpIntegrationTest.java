@@ -41,8 +41,20 @@ public class BurpIntegrationTest {
     /**
      * Builds the command.
      * Extension class name referenced here — see Extension.java for the corresponding declaration.
+     *
+     * <p>Where an app launcher is required (see {@link BurpLocator}), JVM options normally passed on the
+     * command line are instead supplied via the {@code JAVA_TOOL_OPTIONS} environment variable in
+     * {@link #runAllBurpIntegrationTests()} — the launcher only accepts Burp's own application flags.
      */
     private static List<String> buildCommand() {
+        if (installation.appLauncher() != null) {
+            return List.of(
+                    installation.appLauncher().toString(),
+                    "--developer-extension-class-name=burp.Extension",
+                    "--use-defaults"
+            );
+        }
+
         return List.of(
                 installation.javaBinary().toString(),
                 "-Djava.awt.headless=true",
@@ -65,6 +77,14 @@ public class BurpIntegrationTest {
         ProcessBuilder pb = new ProcessBuilder(buildCommand());
         // stderr stays separate — all JVM/Swing/SLF4J noise is discarded, stdout has clean test output
         pb.redirectError(ProcessBuilder.Redirect.DISCARD);
+
+        if (installation.appLauncher() != null) {
+            // The app launcher doesn't accept arbitrary JVM flags, but JAVA_TOOL_OPTIONS is read by the
+            // JVM itself once it starts, regardless of how it was launched.
+            pb.environment().put("JAVA_TOOL_OPTIONS",
+                    "-Djava.awt.headless=true -Xbootclasspath/a:" + extensionJar +
+                            " -Dburptesting.extension=" + extensionName);
+        }
 
         Process process = pb.start();
         try {

@@ -17,6 +17,11 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface GeneratedPayload {
     /**
+     * @return Payload value.
+     */
+    ByteArray value();
+
+    /**
      * Create a new {@link GeneratedPayload} instance from a String payload value.
      *
      * @param payload String payload value.
@@ -44,9 +49,4 @@ public interface GeneratedPayload {
     static GeneratedPayload end() {
         return FACTORY.payloadEnd();
     }
-
-    /**
-     * @return Payload value.
-     */
-    ByteArray value();
 }

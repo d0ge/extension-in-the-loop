@@ -11,7 +11,7 @@ package burp.api.montoya.ui.editor.extension;
 import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.ui.Selection;
 
-import java.awt.*;
+import java.awt.Component;
 
 /**
  * Provides the shared behavior between the different extension provided editor types.

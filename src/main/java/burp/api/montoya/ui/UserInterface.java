@@ -10,7 +10,11 @@ package burp.api.montoya.ui;
 
 import burp.api.montoya.core.Registration;
 import burp.api.montoya.ui.contextmenu.ContextMenuItemsProvider;
-import burp.api.montoya.ui.editor.*;
+import burp.api.montoya.ui.editor.EditorOptions;
+import burp.api.montoya.ui.editor.HttpRequestEditor;
+import burp.api.montoya.ui.editor.HttpResponseEditor;
+import burp.api.montoya.ui.editor.RawEditor;
+import burp.api.montoya.ui.editor.WebSocketMessageEditor;
 import burp.api.montoya.ui.editor.extension.HttpRequestEditorProvider;
 import burp.api.montoya.ui.editor.extension.HttpResponseEditorProvider;
 import burp.api.montoya.ui.editor.extension.WebSocketMessageEditorProvider;
@@ -21,7 +25,8 @@ import burp.api.montoya.ui.menu.MenuBar;
 import burp.api.montoya.ui.settings.SettingsPanel;
 import burp.api.montoya.ui.swing.SwingUtils;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Font;
 
 /**
  * This interface gives you access to various user-interface-related features.

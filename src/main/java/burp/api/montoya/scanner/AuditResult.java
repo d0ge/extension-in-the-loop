@@ -15,6 +15,8 @@ import java.util.List;
 import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 
 public interface AuditResult {
+    List<AuditIssue> auditIssues();
+
     static AuditResult auditResult(List<AuditIssue> auditIssues) {
         return FACTORY.auditResult(auditIssues);
     }
@@ -22,6 +24,4 @@ public interface AuditResult {
     static AuditResult auditResult(AuditIssue... auditIssues) {
         return FACTORY.auditResult(auditIssues);
     }
-
-    List<AuditIssue> auditIssues();
 }

@@ -14,10 +14,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  * Interface used to specify options for AI chat prompts.
  */
 public interface PromptOptions {
-    static PromptOptions promptOptions() {
-        return FACTORY.promptOptions();
-    }
-
     /**
      * Specifies the prompt temperature to be used.
      *
@@ -25,4 +21,8 @@ public interface PromptOptions {
      * @return prompt options
      */
     PromptOptions withTemperature(double temperature);
+
+    static PromptOptions promptOptions() {
+        return FACTORY.promptOptions();
+    }
 }

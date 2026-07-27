@@ -20,6 +20,16 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface BinaryMessageReceivedAction {
     /**
+     * @return The action associated with this message.
+     */
+    MessageReceivedAction action();
+
+    /**
+     * @return The payload of this message.
+     */
+    ByteArray payload();
+
+    /**
      * Build a binary WebSocket message to
      * follow the current interception rules to determine the appropriate
      * action to take for the message.
@@ -93,14 +103,4 @@ public interface BinaryMessageReceivedAction {
     static BinaryMessageReceivedAction drop() {
         return FACTORY.dropInitialProxyBinaryMessage();
     }
-
-    /**
-     * @return The action associated with this message.
-     */
-    MessageReceivedAction action();
-
-    /**
-     * @return The payload of this message.
-     */
-    ByteArray payload();
 }

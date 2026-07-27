@@ -15,46 +15,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface Annotations {
     /**
-     * Create a new empty annotations.
-     *
-     * @return The annotations.
-     */
-    static Annotations annotations() {
-        return FACTORY.annotations();
-    }
-
-    /**
-     * Create a new annotations with notes.
-     *
-     * @param notes The notes of the annotations
-     * @return The annotations.
-     */
-    static Annotations annotations(String notes) {
-        return FACTORY.annotations(notes);
-    }
-
-    /**
-     * Create a new annotations with a highlight color.
-     *
-     * @param highlightColor The highlight color of the annotations
-     * @return The annotations.
-     */
-    static Annotations annotations(HighlightColor highlightColor) {
-        return FACTORY.annotations(highlightColor);
-    }
-
-    /**
-     * Create a new annotations with notes and a highlight color.
-     *
-     * @param notes          The notes of the annotations
-     * @param highlightColor The highlight color of the annotations
-     * @return The annotations.
-     */
-    static Annotations annotations(String notes, HighlightColor highlightColor) {
-        return FACTORY.annotations(notes, highlightColor);
-    }
-
-    /**
      * @return the notes
      */
     String notes();
@@ -103,4 +63,44 @@ public interface Annotations {
      * @return The new annotations.
      */
     Annotations withHighlightColor(HighlightColor highlightColor);
+
+    /**
+     * Create a new empty annotations.
+     *
+     * @return The annotations.
+     */
+    static Annotations annotations() {
+        return FACTORY.annotations();
+    }
+
+    /**
+     * Create a new annotations with notes.
+     *
+     * @param notes The notes of the annotations
+     * @return The annotations.
+     */
+    static Annotations annotations(String notes) {
+        return FACTORY.annotations(notes);
+    }
+
+    /**
+     * Create a new annotations with a highlight color.
+     *
+     * @param highlightColor The highlight color of the annotations
+     * @return The annotations.
+     */
+    static Annotations annotations(HighlightColor highlightColor) {
+        return FACTORY.annotations(highlightColor);
+    }
+
+    /**
+     * Create a new annotations with notes and a highlight color.
+     *
+     * @param notes          The notes of the annotations
+     * @param highlightColor The highlight color of the annotations
+     * @return The annotations.
+     */
+    static Annotations annotations(String notes, HighlightColor highlightColor) {
+        return FACTORY.annotations(notes, highlightColor);
+    }
 }

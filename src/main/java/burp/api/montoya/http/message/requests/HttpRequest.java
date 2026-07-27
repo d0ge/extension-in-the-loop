@@ -28,91 +28,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface HttpRequest extends HttpMessage {
     /**
-     * Create a new empty instance of {@link HttpRequest}.<br>
-     *
-     * @return A new {@link HttpRequest} instance.
-     */
-    static HttpRequest httpRequest() {
-        return FACTORY.httpRequest();
-    }
-
-    /**
-     * Create a new instance of {@link HttpRequest}.<br>
-     *
-     * @param request The HTTP request
-     * @return A new {@link HttpRequest} instance.
-     */
-    static HttpRequest httpRequest(ByteArray request) {
-        return FACTORY.httpRequest(request);
-    }
-
-    /**
-     * Create a new instance of {@link HttpRequest}.<br>
-     *
-     * @param request The HTTP request.
-     * @return A new {@link HttpRequest} instance.
-     */
-    static HttpRequest httpRequest(String request) {
-        return FACTORY.httpRequest(request);
-    }
-
-    /**
-     * Create a new instance of {@link HttpRequest}.<br>
-     *
-     * @param service An HTTP service for the request.
-     * @param request The HTTP request.
-     * @return A new {@link HttpRequest} instance.
-     */
-    static HttpRequest httpRequest(HttpService service, ByteArray request) {
-        return FACTORY.httpRequest(service, request);
-    }
-
-    /**
-     * Create a new instance of {@link HttpRequest}.<br>
-     *
-     * @param service An HTTP service for the request.
-     * @param request The HTTP request.
-     * @return A new {@link HttpRequest} instance.
-     */
-    static HttpRequest httpRequest(HttpService service, String request) {
-        return FACTORY.httpRequest(service, request);
-    }
-
-    /**
-     * Create a new instance of {@link HttpRequest}.<br>
-     *
-     * @param url A URL for the request.
-     * @return A new {@link HttpRequest} instance.
-     */
-    static HttpRequest httpRequestFromUrl(String url) {
-        return FACTORY.httpRequestFromUrl(url);
-    }
-
-    /**
-     * Create a new instance of {@link HttpRequest} containing HTTP 2 headers and body.<br>
-     *
-     * @param service An HTTP service for the request.
-     * @param headers A list of HTTP 2 headers.
-     * @param body    A body of the HTTP 2 request.
-     * @return A new {@link HttpRequest} instance.
-     */
-    static HttpRequest http2Request(HttpService service, List<HttpHeader> headers, ByteArray body) {
-        return FACTORY.http2Request(service, headers, body);
-    }
-
-    /**
-     * Create a new instance of {@link HttpRequest} containing HTTP 2 headers and body.<br>
-     *
-     * @param service An HTTP service for the request.
-     * @param headers A list of HTTP 2 headers.
-     * @param body    A body of the HTTP 2 request.
-     * @return A new {@link HttpRequest} instance.
-     */
-    static HttpRequest http2Request(HttpService service, List<HttpHeader> headers, String body) {
-        return FACTORY.http2Request(service, headers, body);
-    }
-
-    /**
      * @return True if the request is in-scope.
      */
     boolean isInScope();
@@ -622,4 +537,89 @@ public interface HttpRequest extends HttpMessage {
      * @return a new {@link HttpRequest} with added default headers
      */
     HttpRequest withDefaultHeaders();
+
+    /**
+     * Create a new empty instance of {@link HttpRequest}.<br>
+     *
+     * @return A new {@link HttpRequest} instance.
+     */
+    static HttpRequest httpRequest() {
+        return FACTORY.httpRequest();
+    }
+
+    /**
+     * Create a new instance of {@link HttpRequest}.<br>
+     *
+     * @param request The HTTP request
+     * @return A new {@link HttpRequest} instance.
+     */
+    static HttpRequest httpRequest(ByteArray request) {
+        return FACTORY.httpRequest(request);
+    }
+
+    /**
+     * Create a new instance of {@link HttpRequest}.<br>
+     *
+     * @param request The HTTP request.
+     * @return A new {@link HttpRequest} instance.
+     */
+    static HttpRequest httpRequest(String request) {
+        return FACTORY.httpRequest(request);
+    }
+
+    /**
+     * Create a new instance of {@link HttpRequest}.<br>
+     *
+     * @param service An HTTP service for the request.
+     * @param request The HTTP request.
+     * @return A new {@link HttpRequest} instance.
+     */
+    static HttpRequest httpRequest(HttpService service, ByteArray request) {
+        return FACTORY.httpRequest(service, request);
+    }
+
+    /**
+     * Create a new instance of {@link HttpRequest}.<br>
+     *
+     * @param service An HTTP service for the request.
+     * @param request The HTTP request.
+     * @return A new {@link HttpRequest} instance.
+     */
+    static HttpRequest httpRequest(HttpService service, String request) {
+        return FACTORY.httpRequest(service, request);
+    }
+
+    /**
+     * Create a new instance of {@link HttpRequest}.<br>
+     *
+     * @param url A URL for the request.
+     * @return A new {@link HttpRequest} instance.
+     */
+    static HttpRequest httpRequestFromUrl(String url) {
+        return FACTORY.httpRequestFromUrl(url);
+    }
+
+    /**
+     * Create a new instance of {@link HttpRequest} containing HTTP 2 headers and body.<br>
+     *
+     * @param service An HTTP service for the request.
+     * @param headers A list of HTTP 2 headers.
+     * @param body    A body of the HTTP 2 request.
+     * @return A new {@link HttpRequest} instance.
+     */
+    static HttpRequest http2Request(HttpService service, List<HttpHeader> headers, ByteArray body) {
+        return FACTORY.http2Request(service, headers, body);
+    }
+
+    /**
+     * Create a new instance of {@link HttpRequest} containing HTTP 2 headers and body.<br>
+     *
+     * @param service An HTTP service for the request.
+     * @param headers A list of HTTP 2 headers.
+     * @param body    A body of the HTTP 2 request.
+     * @return A new {@link HttpRequest} instance.
+     */
+    static HttpRequest http2Request(HttpService service, List<HttpHeader> headers, String body) {
+        return FACTORY.http2Request(service, headers, body);
+    }
 }

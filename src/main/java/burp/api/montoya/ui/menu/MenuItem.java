@@ -7,6 +7,13 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface MenuItem {
     /**
+     * The caption of the {@link MenuItem}.
+     *
+     * @return The caption.
+     */
+    String caption();
+
+    /**
      * Create a new instance of {@link BasicMenuItem} with a caption.
      *
      * @param caption The caption for the {@link BasicMenuItem}.
@@ -15,11 +22,4 @@ public interface MenuItem {
     static BasicMenuItem basicMenuItem(String caption) {
         return FACTORY.basicMenuItem(caption);
     }
-
-    /**
-     * The caption of the {@link MenuItem}.
-     *
-     * @return The caption.
-     */
-    String caption();
 }

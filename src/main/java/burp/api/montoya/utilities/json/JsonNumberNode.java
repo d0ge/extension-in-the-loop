@@ -14,6 +14,9 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  * This interface is used to define a JSON number node.
  */
 public interface JsonNumberNode extends JsonNode {
+    @Override
+    Number getValue();
+
     /**
      * Creates a new instance of {@link JsonNumberNode} from the supplied long.
      *
@@ -43,7 +46,4 @@ public interface JsonNumberNode extends JsonNode {
     static JsonNumberNode jsonNumberNode(Number value) {
         return FACTORY.jsonNumberNode(value);
     }
-
-    @Override
-    Number getValue();
 }

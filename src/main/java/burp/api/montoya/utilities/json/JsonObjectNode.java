@@ -18,25 +18,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  * <p><em>Note: The underlying map can be accessed. Changes to this map are shown on the Node. You can operate on a copy of the map to avoid this behavior.</em></p>
  */
 public interface JsonObjectNode extends JsonNode {
-    /**
-     * Creates a new empty instance of {@link JsonObjectNode}.
-     *
-     * @return A new {@link JsonObjectNode} instance.
-     */
-    static JsonObjectNode jsonObjectNode() {
-        return FACTORY.jsonObjectNode();
-    }
-
-    /**
-     * Creates a new instance of {@link JsonObjectNode} from the supplied map of String to {@link JsonNode}.
-     *
-     * @param value The map of String to {@link JsonNode}.
-     * @return A new {@link JsonNode} instance.
-     */
-    static JsonObjectNode jsonObjectNode(Map<String, ? extends JsonNode> value) {
-        return FACTORY.jsonObjectNode(value);
-    }
-
     @Override
     Map<String, JsonNode> getValue();
 
@@ -198,4 +179,23 @@ public interface JsonObjectNode extends JsonNode {
      * @return True if the object contains the given key, and the corresponding value is an object.
      */
     boolean hasObject(String key);
+
+    /**
+     * Creates a new empty instance of {@link JsonObjectNode}.
+     *
+     * @return A new {@link JsonObjectNode} instance.
+     */
+    static JsonObjectNode jsonObjectNode() {
+        return FACTORY.jsonObjectNode();
+    }
+
+    /**
+     * Creates a new instance of {@link JsonObjectNode} from the supplied map of String to {@link JsonNode}.
+     *
+     * @param value The map of String to {@link JsonNode}.
+     * @return A new {@link JsonNode} instance.
+     */
+    static JsonObjectNode jsonObjectNode(Map<String, ? extends JsonNode> value) {
+        return FACTORY.jsonObjectNode(value);
+    }
 }

@@ -20,6 +20,16 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface TextMessageReceivedAction {
     /**
+     * @return The action associated with this message.
+     */
+    MessageReceivedAction action();
+
+    /**
+     * @return The payload of this message.
+     */
+    String payload();
+
+    /**
      * Build a text WebSocket message to
      * follow the current interception rules to determine the appropriate
      * action to take for the message.
@@ -93,14 +103,4 @@ public interface TextMessageReceivedAction {
     static TextMessageReceivedAction drop() {
         return FACTORY.dropInitialProxyTextMessage();
     }
-
-    /**
-     * @return The action associated with this message.
-     */
-    MessageReceivedAction action();
-
-    /**
-     * @return The payload of this message.
-     */
-    String payload();
 }

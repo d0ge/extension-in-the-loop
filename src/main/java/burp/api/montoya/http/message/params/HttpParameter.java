@@ -15,6 +15,21 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface HttpParameter {
     /**
+     * @return The parameter type.
+     */
+    HttpParameterType type();
+
+    /**
+     * @return The parameter name.
+     */
+    String name();
+
+    /**
+     * @return The parameter value.
+     */
+    String value();
+
+    /**
      * Create a new Instance of {@code HttpParameter} with {@link HttpParameterType#URL} type.
      *
      * @param name  The parameter name.
@@ -58,19 +73,4 @@ public interface HttpParameter {
     static HttpParameter parameter(String name, String value, HttpParameterType type) {
         return FACTORY.parameter(name, value, type);
     }
-
-    /**
-     * @return The parameter type.
-     */
-    HttpParameterType type();
-
-    /**
-     * @return The parameter name.
-     */
-    String name();
-
-    /**
-     * @return The parameter value.
-     */
-    String value();
 }

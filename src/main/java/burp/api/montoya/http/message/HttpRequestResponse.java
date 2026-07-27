@@ -27,29 +27,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface HttpRequestResponse {
     /**
-     * Create a new instance of {@link HttpRequestResponse}.<br>
-     *
-     * @param request  The HTTP request.
-     * @param response The HTTP response.
-     * @return A new {@link HttpRequestResponse} instance.
-     */
-    static HttpRequestResponse httpRequestResponse(HttpRequest request, HttpResponse response) {
-        return FACTORY.httpRequestResponse(request, response);
-    }
-
-    /**
-     * Create a new instance of {@link HttpRequestResponse}.<br>
-     *
-     * @param httpRequest  The HTTP request.
-     * @param httpResponse The HTTP response.
-     * @param annotations  annotations.
-     * @return A new {@link HttpRequestResponse} instance.
-     */
-    static HttpRequestResponse httpRequestResponse(HttpRequest httpRequest, HttpResponse httpResponse, Annotations annotations) {
-        return FACTORY.httpRequestResponse(httpRequest, httpResponse, annotations);
-    }
-
-    /**
      * @return The HTTP request message.
      */
     HttpRequest request();
@@ -186,4 +163,27 @@ public interface HttpRequestResponse {
      * @return A new {@code HttpRequestResponse} instance.
      */
     HttpRequestResponse withResponseMarkers(Marker... responseMarkers);
+
+    /**
+     * Create a new instance of {@link HttpRequestResponse}.<br>
+     *
+     * @param request  The HTTP request.
+     * @param response The HTTP response.
+     * @return A new {@link HttpRequestResponse} instance.
+     */
+    static HttpRequestResponse httpRequestResponse(HttpRequest request, HttpResponse response) {
+        return FACTORY.httpRequestResponse(request, response);
+    }
+
+    /**
+     * Create a new instance of {@link HttpRequestResponse}.<br>
+     *
+     * @param httpRequest  The HTTP request.
+     * @param httpResponse The HTTP response.
+     * @param annotations  annotations.
+     * @return A new {@link HttpRequestResponse} instance.
+     */
+    static HttpRequestResponse httpRequestResponse(HttpRequest httpRequest, HttpResponse httpResponse, Annotations annotations) {
+        return FACTORY.httpRequestResponse(httpRequest, httpResponse, annotations);
+    }
 }

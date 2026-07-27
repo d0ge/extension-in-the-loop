@@ -18,6 +18,18 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface InteractionFilter {
     /**
+     * This method is invoked for each interaction retrieved from the
+     * Collaborator server and determines whether the interaction should be
+     * included in the list of interactions returned.
+     *
+     * @param server      The collaborator server that received the interaction.
+     * @param interaction The interaction details.
+     * @return {@code true} if the interaction should be included,
+     * {@code false} if not.
+     */
+    boolean matches(CollaboratorServer server, Interaction interaction);
+
+    /**
      * Construct a InteractionFilter that matches any
      * interaction with the specified interaction id.
      *
@@ -40,16 +52,4 @@ public interface InteractionFilter {
     static InteractionFilter interactionPayloadFilter(String payload) {
         return FACTORY.interactionPayloadFilter(payload);
     }
-
-    /**
-     * This method is invoked for each interaction retrieved from the
-     * Collaborator server and determines whether the interaction should be
-     * included in the list of interactions returned.
-     *
-     * @param server      The collaborator server that received the interaction.
-     * @param interaction The interaction details.
-     * @return {@code true} if the interaction should be included,
-     * {@code false} if not.
-     */
-    boolean matches(CollaboratorServer server, Interaction interaction);
 }

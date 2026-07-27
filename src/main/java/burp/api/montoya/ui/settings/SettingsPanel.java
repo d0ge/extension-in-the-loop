@@ -1,6 +1,6 @@
 package burp.api.montoya.ui.settings;
 
-import javax.swing.*;
+import javax.swing.JComponent;
 import java.util.Set;
 
 import static java.util.Collections.emptySet;
