@@ -25,19 +25,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface AuditInsertionPoint {
     /**
-     * This method can be used to create an audit insertion point based on offsets.
-     *
-     * @param name                The name of the audit insertion point.
-     * @param baseRequest         The base {@link HttpRequest}.
-     * @param startIndexInclusive The start index inclusive.
-     * @param endIndexExclusive   The end index exclusive.
-     * @return The {@link AuditInsertionPoint} based on offsets.
-     */
-    static AuditInsertionPoint auditInsertionPoint(String name, HttpRequest baseRequest, int startIndexInclusive, int endIndexExclusive) {
-        return FACTORY.auditInsertionPoint(name, baseRequest, startIndexInclusive, endIndexExclusive);
-    }
-
-    /**
      * Name of this insertion point.
      *
      * @return The name of this insertion point (for example, a description of
@@ -96,5 +83,18 @@ public interface AuditInsertionPoint {
      */
     default AuditInsertionPointType type() {
         return AuditInsertionPointType.EXTENSION_PROVIDED;
+    }
+
+    /**
+     * This method can be used to create an audit insertion point based on offsets.
+     *
+     * @param name                The name of the audit insertion point.
+     * @param baseRequest         The base {@link HttpRequest}.
+     * @param startIndexInclusive The start index inclusive.
+     * @param endIndexExclusive   The end index exclusive.
+     * @return The {@link AuditInsertionPoint} based on offsets.
+     */
+    static AuditInsertionPoint auditInsertionPoint(String name, HttpRequest baseRequest, int startIndexInclusive, int endIndexExclusive) {
+        return FACTORY.auditInsertionPoint(name, baseRequest, startIndexInclusive, endIndexExclusive);
     }
 }

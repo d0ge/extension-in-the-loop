@@ -21,6 +21,23 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface RequestToBeSentAction {
     /**
+     * @return the action.
+     */
+    default RequestAction action() {
+        return RequestAction.CONTINUE;
+    }
+
+    /**
+     * @return The HTTP request.
+     */
+    HttpRequest request();
+
+    /**
+     * @return The annotations.
+     */
+    Annotations annotations();
+
+    /**
      * Create a new instance of {@code RequestToBeSentAction}. Annotations will not be modified.
      *
      * @param request An HTTP request.
@@ -80,21 +97,4 @@ public interface RequestToBeSentAction {
     static RequestToBeSentAction spoof(HttpResponse httpResponse, Annotations annotations) {
         return FACTORY.requestResult(SPOOF_RESPONSE, null, httpResponse, annotations);
     }
-
-    /**
-     * @return the action.
-     */
-    default RequestAction action() {
-        return RequestAction.CONTINUE;
-    }
-
-    /**
-     * @return The HTTP request.
-     */
-    HttpRequest request();
-
-    /**
-     * @return The annotations.
-     */
-    Annotations annotations();
 }

@@ -18,35 +18,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  * <p><em>Note: The underlying list can be accessed. Changes to this list are shown on the Node. You can operate on a copy of the list to avoid this behavior.</em></p>
  */
 public interface JsonArrayNode extends JsonNode {
-    /**
-     * Creates a new empty instance of {@link JsonArrayNode}.
-     *
-     * @return A new {@link JsonArrayNode} instance.
-     */
-    static JsonArrayNode jsonArrayNode() {
-        return FACTORY.jsonArrayNode();
-    }
-
-    /**
-     * Creates a new instance of {@link JsonArrayNode} from the supplied list of {@link JsonNode}.
-     *
-     * @param value The list of {@link JsonNode}.
-     * @return A new {@link JsonNode} instance.
-     */
-    static JsonArrayNode jsonArrayNode(List<? extends JsonNode> value) {
-        return FACTORY.jsonArrayNode(value);
-    }
-
-    /**
-     * Creates a new instance of {@link JsonArrayNode} from the supplied {@link JsonNode} instances.
-     *
-     * @param values The instances of {@link JsonNode}.
-     * @return A new {@link JsonNode} instance.
-     */
-    static JsonArrayNode jsonArrayNode(JsonNode... values) {
-        return FACTORY.jsonArrayNode(values);
-    }
-
     @Override
     List<JsonNode> getValue();
 
@@ -154,4 +125,33 @@ public interface JsonArrayNode extends JsonNode {
      * @param index The index for the JsonNode to remove.
      */
     void remove(int index);
+
+    /**
+     * Creates a new empty instance of {@link JsonArrayNode}.
+     *
+     * @return A new {@link JsonArrayNode} instance.
+     */
+    static JsonArrayNode jsonArrayNode() {
+        return FACTORY.jsonArrayNode();
+    }
+
+    /**
+     * Creates a new instance of {@link JsonArrayNode} from the supplied list of {@link JsonNode}.
+     *
+     * @param value The list of {@link JsonNode}.
+     * @return A new {@link JsonNode} instance.
+     */
+    static JsonArrayNode jsonArrayNode(List<? extends JsonNode> value) {
+        return FACTORY.jsonArrayNode(value);
+    }
+
+    /**
+     * Creates a new instance of {@link JsonArrayNode} from the supplied {@link JsonNode} instances.
+     *
+     * @param values The instances of {@link JsonNode}.
+     * @return A new {@link JsonNode} instance.
+     */
+    static JsonArrayNode jsonArrayNode(JsonNode... values) {
+        return FACTORY.jsonArrayNode(values);
+    }
 }

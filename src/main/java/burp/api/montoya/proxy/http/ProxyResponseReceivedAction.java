@@ -20,6 +20,30 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface ProxyResponseReceivedAction {
     /**
+     * This method retrieves the current initial intercept action.
+     *
+     * @return The {@link MessageReceivedAction}.
+     */
+    MessageReceivedAction action();
+
+    /**
+     * This method retrieves the current HTTP response to forward after any
+     * modifications by the extension.
+     *
+     * @return The {@link HttpResponse} to forward after any modifications by
+     * the extension.
+     */
+    HttpResponse response();
+
+    /**
+     * This method retrieves the annotations for the current response after any
+     * modifications by the extension.
+     *
+     * @return The {@link Annotations} for the intercepted HTTP response.
+     */
+    Annotations annotations();
+
+    /**
      * This method can be used to create an action that causes Burp Proxy to
      * follow the current interception rules to determine the appropriate
      * action to take for the response.<br>
@@ -135,28 +159,4 @@ public interface ProxyResponseReceivedAction {
     static ProxyResponseReceivedAction proxyResponseReceivedAction(HttpResponse response, Annotations annotations, MessageReceivedAction action) {
         return FACTORY.proxyResponseReceivedAction(response, annotations, action);
     }
-
-    /**
-     * This method retrieves the current initial intercept action.
-     *
-     * @return The {@link MessageReceivedAction}.
-     */
-    MessageReceivedAction action();
-
-    /**
-     * This method retrieves the current HTTP response to forward after any
-     * modifications by the extension.
-     *
-     * @return The {@link HttpResponse} to forward after any modifications by
-     * the extension.
-     */
-    HttpResponse response();
-
-    /**
-     * This method retrieves the annotations for the current response after any
-     * modifications by the extension.
-     *
-     * @return The {@link Annotations} for the intercepted HTTP response.
-     */
-    Annotations annotations();
 }

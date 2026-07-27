@@ -4,7 +4,7 @@ import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.ui.Selection;
 import burp.api.montoya.ui.contextmenu.WebSocketMessage;
 
-import java.awt.*;
+import java.awt.Component;
 
 /**
  * Extensions that register an {@link WebSocketMessageEditorProvider} must return an instance of this interface.<br/>

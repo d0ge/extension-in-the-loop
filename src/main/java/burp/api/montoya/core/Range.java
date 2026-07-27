@@ -15,17 +15,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface Range {
     /**
-     * Create a range object from two indices.
-     *
-     * @param startIndexInclusive The start index of the range inclusive of this value.
-     * @param endIndexExclusive   The end index of the range exclusive of this value.
-     * @return The range.
-     */
-    static Range range(int startIndexInclusive, int endIndexExclusive) {
-        return FACTORY.range(startIndexInclusive, endIndexExclusive);
-    }
-
-    /**
      * @return the inclusive start index
      */
     int startIndexInclusive();
@@ -40,4 +29,15 @@ public interface Range {
      * @return True if the index is in the range.
      */
     boolean contains(int index);
+
+    /**
+     * Create a range object from two indices.
+     *
+     * @param startIndexInclusive The start index of the range inclusive of this value.
+     * @param endIndexExclusive   The end index of the range exclusive of this value.
+     * @return The range.
+     */
+    static Range range(int startIndexInclusive, int endIndexExclusive) {
+        return FACTORY.range(startIndexInclusive, endIndexExclusive);
+    }
 }

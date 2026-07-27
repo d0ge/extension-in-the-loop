@@ -9,15 +9,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface ExecuteOptions {
     /**
-     * Creates a new {@link ExecuteOptions} instance.
-     *
-     * @return An {@link ExecuteOptions} instance with default settings.
-     */
-    static ExecuteOptions executeOptions() {
-        return FACTORY.executeOptions();
-    }
-
-    /**
      * Sets the maximum duration the process is allowed to run in seconds. Defaults to 10 seconds. To disable the timeout, use 0.
      * <p>
      * Use {@link ExecuteOptions#withTimeoutBehavior} to define the behavior regarding whether timeouts should throw an exception or be silently ignored.
@@ -69,4 +60,14 @@ public interface ExecuteOptions {
      * @return An {@link ExecuteOptions} instance with the added variable.
      */
     ExecuteOptions withEnvironmentVariable(String name, String value);
+
+
+    /**
+     * Creates a new {@link ExecuteOptions} instance.
+     *
+     * @return An {@link ExecuteOptions} instance with default settings.
+     */
+    static ExecuteOptions executeOptions() {
+        return FACTORY.executeOptions();
+    }
 }

@@ -15,6 +15,14 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface SecretKey {
     /**
+     * Secret key in string form.
+     *
+     * @return The base64 encoded secret key.
+     */
+    @Override
+    String toString();
+
+    /**
      * Create an instance of {@link SecretKey} which
      * you will be able to use to restore a previously created {@link CollaboratorClient}
      * with the {@link Collaborator#restoreClient(SecretKey)} method.
@@ -25,12 +33,4 @@ public interface SecretKey {
     static SecretKey secretKey(String encodedKey) {
         return FACTORY.secretKey(encodedKey);
     }
-
-    /**
-     * Secret key in string form.
-     *
-     * @return The base64 encoded secret key.
-     */
-    @Override
-    String toString();
 }

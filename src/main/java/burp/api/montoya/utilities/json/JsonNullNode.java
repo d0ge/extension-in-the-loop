@@ -14,6 +14,9 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  * This interface is used to define a JSON null node.
  */
 public interface JsonNullNode extends JsonNode {
+    @Override
+    Object getValue();
+
     /**
      * Creates a new instance of {@link JsonNullNode}.
      *
@@ -22,7 +25,4 @@ public interface JsonNullNode extends JsonNode {
     static JsonNullNode jsonNullNode() {
         return FACTORY.jsonNullNode();
     }
-
-    @Override
-    Object getValue();
 }

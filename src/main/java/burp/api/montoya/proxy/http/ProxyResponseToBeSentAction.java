@@ -20,6 +20,30 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface ProxyResponseToBeSentAction {
     /**
+     * This method retrieves the current final intercept action.
+     *
+     * @return The {@link MessageToBeSentAction}.
+     */
+    MessageToBeSentAction action();
+
+    /**
+     * This method retrieves the current HTTP response to forward after any
+     * modifications by the extension.
+     *
+     * @return The {@link HttpResponse} to forward after any modifications by
+     * the extension.
+     */
+    HttpResponse response();
+
+    /**
+     * This method retrieves the annotations for the current response after any
+     * modifications by the extension.
+     *
+     * @return The {@link Annotations} for the intercepted HTTP response.
+     */
+    Annotations annotations();
+
+    /**
      * This method can be used to create a result that causes Burp Proxy to
      * forward the response.<br>
      * Annotations are not modified.
@@ -70,28 +94,4 @@ public interface ProxyResponseToBeSentAction {
     static ProxyResponseToBeSentAction proxyResponseToReturnAction(HttpResponse response, Annotations annotations, MessageToBeSentAction action) {
         return FACTORY.proxyResponseToReturnAction(response, annotations, action);
     }
-
-    /**
-     * This method retrieves the current final intercept action.
-     *
-     * @return The {@link MessageToBeSentAction}.
-     */
-    MessageToBeSentAction action();
-
-    /**
-     * This method retrieves the current HTTP response to forward after any
-     * modifications by the extension.
-     *
-     * @return The {@link HttpResponse} to forward after any modifications by
-     * the extension.
-     */
-    HttpResponse response();
-
-    /**
-     * This method retrieves the annotations for the current response after any
-     * modifications by the extension.
-     *
-     * @return The {@link Annotations} for the intercepted HTTP response.
-     */
-    Annotations annotations();
 }

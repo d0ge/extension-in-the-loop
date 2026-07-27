@@ -68,17 +68,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface JsonNode {
     /**
-     * Creates a new instance of {@link JsonNode} from the supplied json string.
-     *
-     * @param json The JSON string, which may use single quotes in place of double quotes.
-     * @return A new {@link JsonNode} instance.
-     * @throws JsonParseException If the string is not valid JSON.
-     */
-    static JsonNode jsonNode(String json) {
-        return FACTORY.jsonNode(json);
-    }
-
-    /**
      * Retrieves the value for this {@link JsonNode}.
      *
      * @return The value for this JsonNode.
@@ -182,4 +171,15 @@ public interface JsonNode {
      * @throws IllegalStateException If this JsonNode is not an object type.
      */
     JsonObjectNode asObject();
+
+    /**
+     * Creates a new instance of {@link JsonNode} from the supplied json string.
+     *
+     * @param json The JSON string, which may use single quotes in place of double quotes.
+     * @return A new {@link JsonNode} instance.
+     * @throws JsonParseException If the string is not valid JSON.
+     */
+    static JsonNode jsonNode(String json) {
+        return FACTORY.jsonNode(json);
+    }
 }

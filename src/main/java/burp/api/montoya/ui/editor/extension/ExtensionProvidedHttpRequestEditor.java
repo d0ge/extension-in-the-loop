@@ -12,7 +12,7 @@ import burp.api.montoya.http.message.HttpRequestResponse;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.ui.Selection;
 
-import java.awt.*;
+import java.awt.Component;
 
 /**
  * Extensions that register an {@link HttpRequestEditorProvider} must return an instance of this interface.<br/>

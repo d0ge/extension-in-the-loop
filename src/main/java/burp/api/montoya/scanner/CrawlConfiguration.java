@@ -17,6 +17,11 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface CrawlConfiguration {
     /**
+     * @return the seed urls for the crawl
+     */
+    List<String> seedUrls();
+
+    /**
      * Build a crawl configuration with seed urls
      *
      * @param seedUrls used by the crawler
@@ -25,9 +30,4 @@ public interface CrawlConfiguration {
     static CrawlConfiguration crawlConfiguration(String... seedUrls) {
         return FACTORY.crawlConfiguration(seedUrls);
     }
-
-    /**
-     * @return the seed urls for the crawl
-     */
-    List<String> seedUrls();
 }

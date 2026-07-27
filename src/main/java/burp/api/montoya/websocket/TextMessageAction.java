@@ -15,6 +15,16 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface TextMessageAction {
     /**
+     * @return The action associated with this message.
+     */
+    MessageAction action();
+
+    /**
+     * @return The payload of this message.
+     */
+    String payload();
+
+    /**
      * Build a text WebSocket message to be processed.
      *
      * @param payload The text message payload.
@@ -53,14 +63,4 @@ public interface TextMessageAction {
     static TextMessageAction textMessageAction(String payload, MessageAction action) {
         return FACTORY.textMessageAction(payload, action);
     }
-
-    /**
-     * @return The action associated with this message.
-     */
-    MessageAction action();
-
-    /**
-     * @return The payload of this message.
-     */
-    String payload();
 }

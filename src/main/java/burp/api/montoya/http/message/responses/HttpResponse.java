@@ -10,7 +10,11 @@ package burp.api.montoya.http.message.responses;
 
 import burp.api.montoya.core.ByteArray;
 import burp.api.montoya.core.Marker;
-import burp.api.montoya.http.message.*;
+import burp.api.montoya.http.message.Cookie;
+import burp.api.montoya.http.message.HttpHeader;
+import burp.api.montoya.http.message.HttpMessage;
+import burp.api.montoya.http.message.MimeType;
+import burp.api.montoya.http.message.StatusCodeClass;
 import burp.api.montoya.http.message.responses.analysis.Attribute;
 import burp.api.montoya.http.message.responses.analysis.AttributeType;
 import burp.api.montoya.http.message.responses.analysis.KeywordCount;
@@ -24,35 +28,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  * Burp HTTP response able to retrieve and modify details about an HTTP response.
  */
 public interface HttpResponse extends HttpMessage {
-    /**
-     * Create a new empty instance of {@link HttpResponse}.<br>
-     *
-     * @return A new {@link HttpResponse} instance.
-     */
-    static HttpResponse httpResponse() {
-        return FACTORY.httpResponse();
-    }
-
-    /**
-     * Create a new instance of {@link HttpResponse}.<br>
-     *
-     * @param response The HTTP response.
-     * @return A new {@link HttpResponse} instance.
-     */
-    static HttpResponse httpResponse(ByteArray response) {
-        return FACTORY.httpResponse(response);
-    }
-
-    /**
-     * Create a new instance of {@link HttpResponse}.<br>
-     *
-     * @param response The HTTP response.
-     * @return A new {@link HttpResponse} instance.
-     */
-    static HttpResponse httpResponse(String response) {
-        return FACTORY.httpResponse(response);
-    }
-
     /**
      * Obtain the HTTP status code contained in the response.
      *
@@ -429,4 +404,33 @@ public interface HttpResponse extends HttpMessage {
      * @return A new {@code MarkedHttpRequestResponse} instance.
      */
     HttpResponse withMarkers(Marker... markers);
+
+    /**
+     * Create a new empty instance of {@link HttpResponse}.<br>
+     *
+     * @return A new {@link HttpResponse} instance.
+     */
+    static HttpResponse httpResponse() {
+        return FACTORY.httpResponse();
+    }
+
+    /**
+     * Create a new instance of {@link HttpResponse}.<br>
+     *
+     * @param response The HTTP response.
+     * @return A new {@link HttpResponse} instance.
+     */
+    static HttpResponse httpResponse(ByteArray response) {
+        return FACTORY.httpResponse(response);
+    }
+
+    /**
+     * Create a new instance of {@link HttpResponse}.<br>
+     *
+     * @param response The HTTP response.
+     * @return A new {@link HttpResponse} instance.
+     */
+    static HttpResponse httpResponse(String response) {
+        return FACTORY.httpResponse(response);
+    }
 }

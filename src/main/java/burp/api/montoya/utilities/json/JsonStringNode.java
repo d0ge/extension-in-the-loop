@@ -14,6 +14,9 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  * This interface is used to define a JSON string node.
  */
 public interface JsonStringNode extends JsonNode {
+    @Override
+    String getValue();
+
     /**
      * Creates a new instance of {@link JsonStringNode} from the supplied string.
      *
@@ -23,7 +26,4 @@ public interface JsonStringNode extends JsonNode {
     static JsonStringNode jsonStringNode(String value) {
         return FACTORY.jsonStringNode(value);
     }
-
-    @Override
-    String getValue();
 }

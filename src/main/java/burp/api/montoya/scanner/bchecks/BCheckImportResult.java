@@ -7,6 +7,14 @@ import java.util.List;
  */
 public interface BCheckImportResult {
     /**
+     * The status of an imported BCheck
+     */
+    enum Status {
+        LOADED_WITHOUT_ERRORS,
+        LOADED_WITH_ERRORS
+    }
+
+    /**
      * The status of the BCheck after import
      *
      * @return the status
@@ -17,12 +25,4 @@ public interface BCheckImportResult {
      * @return a list of errors if the script was invalid or empty is the script was valid.
      */
     List<String> importErrors();
-
-    /**
-     * The status of an imported BCheck
-     */
-    enum Status {
-        LOADED_WITHOUT_ERRORS,
-        LOADED_WITH_ERRORS
-    }
 }

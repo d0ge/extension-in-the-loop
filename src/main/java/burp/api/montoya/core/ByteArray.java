@@ -18,46 +18,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface ByteArray extends Iterable<Byte> {
     /**
-     * Create a new {@code ByteArray} with the provided length.<br>
-     *
-     * @param length array length.
-     * @return New {@code ByteArray} with the provided length.
-     */
-    static ByteArray byteArrayOfLength(int length) {
-        return FACTORY.byteArrayOfLength(length);
-    }
-
-    /**
-     * Create a new {@code ByteArray} with the provided byte data.<br>
-     *
-     * @param data byte[] to wrap, or sequence of bytes to wrap.
-     * @return New {@code ByteArray} wrapping the provided byte array.
-     */
-    static ByteArray byteArray(byte... data) {
-        return FACTORY.byteArray(data);
-    }
-
-    /**
-     * Create a new {@code ByteArray} with the provided integers after a narrowing primitive conversion to bytes.<br>
-     *
-     * @param data int[] to wrap or sequence of integers to wrap.
-     * @return New {@code ByteArray} wrapping the provided data after a narrowing primitive conversion to bytes.
-     */
-    static ByteArray byteArray(int... data) {
-        return FACTORY.byteArray(data);
-    }
-
-    /**
-     * Create a new {@code ByteArray} from the provided text using the encoding specified by Burp Suite.<br>
-     *
-     * @param text the text for the byte array.
-     * @return New {@code ByteArray} holding a copy of the text as bytes.
-     */
-    static ByteArray byteArray(String text) {
-        return FACTORY.byteArray(text);
-    }
-
-    /**
      * Access the byte stored at the provided index.
      *
      * @param index Index of the byte to be retrieved.
@@ -342,5 +302,45 @@ public interface ByteArray extends Iterable<Byte> {
      * @param byteArray The ByteArray to append.
      */
     ByteArray withAppended(ByteArray byteArray);
+
+    /**
+     * Create a new {@code ByteArray} with the provided length.<br>
+     *
+     * @param length array length.
+     * @return New {@code ByteArray} with the provided length.
+     */
+    static ByteArray byteArrayOfLength(int length) {
+        return FACTORY.byteArrayOfLength(length);
+    }
+
+    /**
+     * Create a new {@code ByteArray} with the provided byte data.<br>
+     *
+     * @param data byte[] to wrap, or sequence of bytes to wrap.
+     * @return New {@code ByteArray} wrapping the provided byte array.
+     */
+    static ByteArray byteArray(byte... data) {
+        return FACTORY.byteArray(data);
+    }
+
+    /**
+     * Create a new {@code ByteArray} with the provided integers after a narrowing primitive conversion to bytes.<br>
+     *
+     * @param data int[] to wrap or sequence of integers to wrap.
+     * @return New {@code ByteArray} wrapping the provided data after a narrowing primitive conversion to bytes.
+     */
+    static ByteArray byteArray(int... data) {
+        return FACTORY.byteArray(data);
+    }
+
+    /**
+     * Create a new {@code ByteArray} from the provided text using the encoding specified by Burp Suite.<br>
+     *
+     * @param text the text for the byte array.
+     * @return New {@code ByteArray} holding a copy of the text as bytes.
+     */
+    static ByteArray byteArray(String text) {
+        return FACTORY.byteArray(text);
+    }
 }
 

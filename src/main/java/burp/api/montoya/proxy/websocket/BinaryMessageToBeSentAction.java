@@ -20,6 +20,16 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface BinaryMessageToBeSentAction {
     /**
+     * @return The action associated with this message.
+     */
+    MessageToBeSentAction action();
+
+    /**
+     * @return The payload of this message.
+     */
+    ByteArray payload();
+
+    /**
      * Build a binary WebSocket message to continue through Burp.
      *
      * @param payload The binary message payload.
@@ -47,14 +57,4 @@ public interface BinaryMessageToBeSentAction {
     static BinaryMessageToBeSentAction drop() {
         return FACTORY.dropFinalProxyBinaryMessage();
     }
-
-    /**
-     * @return The action associated with this message.
-     */
-    MessageToBeSentAction action();
-
-    /**
-     * @return The payload of this message.
-     */
-    ByteArray payload();
 }

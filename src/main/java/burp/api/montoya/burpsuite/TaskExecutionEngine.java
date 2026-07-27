@@ -13,6 +13,13 @@ package burp.api.montoya.burpsuite;
  */
 public interface TaskExecutionEngine {
     /**
+     * Task execution engine state
+     */
+    enum TaskExecutionEngineState {
+        RUNNING, PAUSED
+    }
+
+    /**
      * Retrieves the current state of the task execution engine.
      *
      * @return current state
@@ -25,11 +32,4 @@ public interface TaskExecutionEngine {
      * @param state new state
      */
     void setState(TaskExecutionEngineState state);
-
-    /**
-     * Task execution engine state
-     */
-    enum TaskExecutionEngineState {
-        RUNNING, PAUSED
-    }
 }

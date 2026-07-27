@@ -8,7 +8,7 @@
 
 package burp.api.montoya.ui.contextmenu;
 
-import java.awt.*;
+import java.awt.Component;
 import java.util.List;
 
 import static java.util.Collections.emptyList;

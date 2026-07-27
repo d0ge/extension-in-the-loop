@@ -16,6 +16,34 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
 public interface HttpService {
 
     /**
+     * @return The hostname or IP address for the service.
+     */
+    String host();
+
+    /**
+     * @return The port number for the service.
+     */
+    int port();
+
+    /**
+     * @return True if a secure protocol is used for the connection, false otherwise.
+     */
+    boolean secure();
+
+    /**
+     * Dynamically resolve the host to an IP address.
+     *
+     * @return The IP address of the host.
+     */
+    String ipAddress();
+
+    /**
+     * @return The {@code String} representation of the service.
+     */
+    @Override
+    String toString();
+
+    /**
      * Create a new instance of {@code HttpService}.
      *
      * @param baseUrl The URL for the service.
@@ -48,32 +76,4 @@ public interface HttpService {
     static HttpService httpService(String host, int port, boolean secure) {
         return FACTORY.httpService(host, port, secure);
     }
-
-    /**
-     * @return The hostname or IP address for the service.
-     */
-    String host();
-
-    /**
-     * @return The port number for the service.
-     */
-    int port();
-
-    /**
-     * @return True if a secure protocol is used for the connection, false otherwise.
-     */
-    boolean secure();
-
-    /**
-     * Dynamically resolve the host to an IP address.
-     *
-     * @return The IP address of the host.
-     */
-    String ipAddress();
-
-    /**
-     * @return The {@code String} representation of the service.
-     */
-    @Override
-    String toString();
 }

@@ -12,9 +12,16 @@ import burp.api.montoya.ai.chat.Message;
 import burp.api.montoya.ai.chat.PromptOptions;
 import burp.api.montoya.collaborator.InteractionFilter;
 import burp.api.montoya.collaborator.SecretKey;
-import burp.api.montoya.core.*;
+import burp.api.montoya.core.Annotations;
+import burp.api.montoya.core.ByteArray;
+import burp.api.montoya.core.HighlightColor;
+import burp.api.montoya.core.Marker;
+import burp.api.montoya.core.Range;
 import burp.api.montoya.http.HttpService;
 import burp.api.montoya.http.RequestOptions;
+import burp.api.montoya.http.execution.RequestEngineOptions;
+import burp.api.montoya.http.execution.ResourcePool;
+import burp.api.montoya.http.execution.SourcedRequest;
 import burp.api.montoya.http.handler.RequestAction;
 import burp.api.montoya.http.handler.RequestToBeSentAction;
 import burp.api.montoya.http.handler.ResponseReceivedAction;
@@ -25,7 +32,11 @@ import burp.api.montoya.http.message.params.HttpParameterType;
 import burp.api.montoya.http.message.requests.HttpRequest;
 import burp.api.montoya.http.message.responses.HttpResponse;
 import burp.api.montoya.http.sessions.ActionResult;
-import burp.api.montoya.intruder.*;
+import burp.api.montoya.intruder.GeneratedPayload;
+import burp.api.montoya.intruder.HttpRequestTemplate;
+import burp.api.montoya.intruder.HttpRequestTemplateGenerationOptions;
+import burp.api.montoya.intruder.PayloadProcessingAction;
+import burp.api.montoya.intruder.PayloadProcessingResult;
 import burp.api.montoya.persistence.PersistedList;
 import burp.api.montoya.persistence.PersistedObject;
 import burp.api.montoya.proxy.MessageReceivedAction;
@@ -54,7 +65,13 @@ import burp.api.montoya.ui.menu.BasicMenuItem;
 import burp.api.montoya.ui.menu.Menu;
 import burp.api.montoya.ui.settings.SettingsPanelBuilder;
 import burp.api.montoya.ui.settings.SettingsPanelSetting;
-import burp.api.montoya.utilities.json.*;
+import burp.api.montoya.utilities.json.JsonArrayNode;
+import burp.api.montoya.utilities.json.JsonBooleanNode;
+import burp.api.montoya.utilities.json.JsonNode;
+import burp.api.montoya.utilities.json.JsonNullNode;
+import burp.api.montoya.utilities.json.JsonNumberNode;
+import burp.api.montoya.utilities.json.JsonObjectNode;
+import burp.api.montoya.utilities.json.JsonStringNode;
 import burp.api.montoya.utilities.shell.ExecuteOptions;
 import burp.api.montoya.websocket.BinaryMessageAction;
 import burp.api.montoya.websocket.MessageAction;
@@ -327,6 +344,18 @@ public interface MontoyaObjectFactory {
     BasicMenuItem basicMenuItem(String caption);
 
     RequestOptions requestOptions();
+
+    RequestEngineOptions requestEngineOptions();
+
+    ResourcePool resourcePool();
+
+    ResourcePool defaultResourcePool();
+
+    ResourcePool existingResourcePool(String name);
+
+    SourcedRequest sourcedRequest(HttpRequest request);
+
+    SourcedRequest sourcedRequest(HttpRequest request, String label);
 
     JsonNode jsonNode(String json);
 

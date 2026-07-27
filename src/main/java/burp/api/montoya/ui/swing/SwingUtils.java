@@ -10,7 +10,10 @@ package burp.api.montoya.ui.swing;
 
 import burp.api.montoya.core.HighlightColor;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Frame;
+import java.awt.Window;
 
 /**
  * This interface gives you access to swing utilities.

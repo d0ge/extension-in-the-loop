@@ -20,6 +20,30 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface ProxyRequestReceivedAction {
     /**
+     * This method retrieves the current initial intercept action.
+     *
+     * @return The {@link MessageReceivedAction}.
+     */
+    MessageReceivedAction action();
+
+    /**
+     * This method retrieves the current HTTP request to forward after any
+     * modifications by the extension.
+     *
+     * @return The {@link HttpRequest} to forward after any modifications by
+     * the extension.
+     */
+    HttpRequest request();
+
+    /**
+     * This method retrieves the annotations for the current request after any
+     * modifications by the extension.
+     *
+     * @return The {@link Annotations} for the intercepted HTTP request.
+     */
+    Annotations annotations();
+
+    /**
      * This method can be used to create a result that causes Burp Proxy to
      * follow the current interception rules to determine the appropriate
      * action to take for the request.<br>
@@ -133,28 +157,4 @@ public interface ProxyRequestReceivedAction {
     static ProxyRequestReceivedAction proxyRequestReceivedAction(HttpRequest request, Annotations annotations, MessageReceivedAction action) {
         return FACTORY.proxyRequestReceivedAction(request, annotations, action);
     }
-
-    /**
-     * This method retrieves the current initial intercept action.
-     *
-     * @return The {@link MessageReceivedAction}.
-     */
-    MessageReceivedAction action();
-
-    /**
-     * This method retrieves the current HTTP request to forward after any
-     * modifications by the extension.
-     *
-     * @return The {@link HttpRequest} to forward after any modifications by
-     * the extension.
-     */
-    HttpRequest request();
-
-    /**
-     * This method retrieves the annotations for the current request after any
-     * modifications by the extension.
-     *
-     * @return The {@link Annotations} for the intercepted HTTP request.
-     */
-    Annotations annotations();
 }

@@ -18,6 +18,16 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface ActionResult {
     /**
+     * @return The HTTP request.
+     */
+    HttpRequest request();
+
+    /**
+     * @return The annotations.
+     */
+    Annotations annotations();
+
+    /**
      * Create a new instance of {@code ActionResult}.<br>
      * Annotations will not be modified.
      *
@@ -38,14 +48,4 @@ public interface ActionResult {
     static ActionResult actionResult(HttpRequest request, Annotations annotations) {
         return FACTORY.actionResult(request, annotations);
     }
-
-    /**
-     * @return The HTTP request.
-     */
-    HttpRequest request();
-
-    /**
-     * @return The annotations.
-     */
-    Annotations annotations();
 }

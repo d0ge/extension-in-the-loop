@@ -15,17 +15,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface HotKey {
     /**
-     * Create a new instance
-     *
-     * @param name   The name of the hot key.
-     * @param hotkey The hot key.
-     * @return A new {@code HotKey} instance.
-     */
-    static HotKey hotKey(String name, String hotkey) {
-        return FACTORY.hotkey(name, hotkey);
-    }
-
-    /**
      * @return the name of the hot key.
      */
     String name();
@@ -36,4 +25,15 @@ public interface HotKey {
      * @return the hot key
      */
     String hotkey();
+
+    /**
+     * Create a new instance
+     *
+     * @param name   The name of the hot key.
+     * @param hotkey The hot key.
+     * @return A new {@code HotKey} instance.
+     */
+    static HotKey hotKey(String name, String hotkey) {
+        return FACTORY.hotkey(name, hotkey);
+    }
 }

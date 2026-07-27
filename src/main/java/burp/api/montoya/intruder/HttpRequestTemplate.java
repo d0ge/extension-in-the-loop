@@ -21,6 +21,18 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface HttpRequestTemplate {
     /**
+     * @return Content of the request template.
+     */
+    ByteArray content();
+
+    /**
+     * Insertion point offsets for an Intruder attack.
+     *
+     * @return A list of {@link Range} objects representing insertion point offsets.
+     */
+    List<Range> insertionPointOffsets();
+
+    /**
      * Create a new {@link HttpRequestTemplate} instance
      * from an {@link HttpRequest} object and a list of insertion point offsets.
      *
@@ -67,16 +79,4 @@ public interface HttpRequestTemplate {
     static HttpRequestTemplate httpRequestTemplate(ByteArray content, HttpRequestTemplateGenerationOptions options) {
         return FACTORY.httpRequestTemplate(content, options);
     }
-
-    /**
-     * @return Content of the request template.
-     */
-    ByteArray content();
-
-    /**
-     * Insertion point offsets for an Intruder attack.
-     *
-     * @return A list of {@link Range} objects representing insertion point offsets.
-     */
-    List<Range> insertionPointOffsets();
 }

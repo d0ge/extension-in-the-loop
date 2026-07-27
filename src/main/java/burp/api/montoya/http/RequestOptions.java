@@ -7,15 +7,6 @@ import static burp.api.montoya.internal.ObjectFactoryLocator.FACTORY;
  */
 public interface RequestOptions {
     /**
-     * Use to obtain a new RequestOptions instance
-     *
-     * @return request options
-     */
-    static RequestOptions requestOptions() {
-        return FACTORY.requestOptions();
-    }
-
-    /**
      * Specify HTTP mode to be used when request sent.
      *
      * @param httpMode An {@link HttpMode} enum value which indicates how a request should be sent.
@@ -61,4 +52,13 @@ public interface RequestOptions {
      * @return request options
      */
     RequestOptions withResponseTimeout(long timeoutMs);
+
+    /**
+     * Use to obtain a new RequestOptions instance
+     *
+     * @return request options
+     */
+    static RequestOptions requestOptions() {
+        return FACTORY.requestOptions();
+    }
 }
